@@ -36,7 +36,13 @@ export default function HomeScreen({ navigation }) {
         numColumns={2}
         contentContainerStyle={styles.list}
       />
-      <Button title={`Go to Cart (${cart.length})`} onPress={() => navigation.navigate('Cart')} />
+      {/* <Button  title={`Go to Cart (${cart.length})`} onPress={() => navigation.navigate('Cart')} /> */}
+      <TouchableOpacity
+  style={styles.cartButton}
+  onPress={() => navigation.navigate('Cart')}
+>
+  <Text style={styles.cartButtonText}>Go to Cart {cart.length>0 ? "("+cart.length+")" : ""}</Text>
+</TouchableOpacity>
     </View>
   );
 }
@@ -49,4 +55,27 @@ const styles = StyleSheet.create({
   },
   image: { width: 80, height: 80, resizeMode: 'contain', marginBottom: 5 },
   price: { fontWeight: 'bold' },
+  cartButton: {
+  position: 'absolute',
+  bottom: 20,
+  left: 20,
+  right: 20,
+  backgroundColor: '#000',
+  padding: 15,
+  borderRadius: 10,
+  alignItems: 'center',
+  justifyContent: 'center',
+  elevation: 5, // for Android shadow
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.3,
+  shadowRadius: 4,
+},
+
+cartButtonText: {
+  color: '#fff',
+  fontWeight: 'bold',
+  fontSize: 16,
+},
+
 });

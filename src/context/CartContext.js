@@ -21,6 +21,8 @@ function reducer(state, action) {
             : []
           : [p]
       );
+    case 'REMOVE_FROM_CART':
+        return state.filter((p)=> p.id!==action.payload);
     case 'SET_CART':
       return action.payload;
     default:
